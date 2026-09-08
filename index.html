@@ -1,0 +1,438 @@
+<title>Elizabeth Schaefer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── TOKENS ── */
+  :root {
+    --bg:     #F8F7F4;
+    --text:   #1A1916;
+    --muted:  #7B796F;
+    --border: #E0DDD6;
+
+    --neon-pink:   #FF2D78;
+    --neon-green:  #00E87A;
+    --neon-orange: #FF5C00;
+
+    --neon-pink-faint:   rgba(255, 45, 120, 0.09);
+    --neon-green-faint:  rgba(0, 232, 122, 0.10);
+    --neon-orange-faint: rgba(255, 92, 0, 0.09);
+
+    --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --f-body:    'Inter', system-ui, sans-serif;
+    --f-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:     #131210;
+      --text:   #EDE9E1;
+      --muted:  #89877D;
+      --border: #2C2922;
+
+      --neon-pink:   #FF3D85;
+      --neon-green:  #00FF88;
+      --neon-orange: #FF6B00;
+
+      --neon-pink-faint:   rgba(255, 61, 133, 0.14);
+      --neon-green-faint:  rgba(0, 255, 136, 0.12);
+      --neon-orange-faint: rgba(255, 107, 0, 0.13);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:     #131210;
+    --text:   #EDE9E1;
+    --muted:  #89877D;
+    --border: #2C2922;
+
+    --neon-pink:   #FF3D85;
+    --neon-green:  #00FF88;
+    --neon-orange: #FF6B00;
+
+    --neon-pink-faint:   rgba(255, 61, 133, 0.14);
+    --neon-green-faint:  rgba(0, 255, 136, 0.12);
+    --neon-orange-faint: rgba(255, 107, 0, 0.13);
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--f-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-mark {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-mark:hover { color: var(--neon-pink); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--f-mono);
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--neon-orange); }
+  .nav-links a:focus-visible {
+    outline: 2px solid var(--neon-orange);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero-section {
+    background: var(--bg);
+    padding: 5rem 3rem 4.5rem;
+    /* Tri-neon gradient line separating hero from content */
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(
+      to right,
+      var(--neon-pink) 0%,
+      var(--neon-orange) 50%,
+      var(--neon-green) 100%
+    ) 1;
+  }
+
+  .hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .hero-name {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    font-optical-sizing: auto;
+    color: var(--neon-pink);
+    text-wrap: balance;
+  }
+
+  /* ── PAGE GRID ── */
+  .page-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0 5rem;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 3rem 7rem;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: sticky;
+    top: 3.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+    border-left: 2px solid var(--neon-green);
+    padding-left: 1.75rem;
+    margin-left: -1.75rem;
+  }
+
+  /* ── MAIN COLUMN ── */
+  .main-col { display: flex; flex-direction: column; }
+
+  /* ── SECTIONS ── */
+  section { padding: 3.5rem 0; }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .eyebrow::before { content: '▸'; font-size: 0.55rem; }
+  .eyebrow-green  { color: var(--neon-green); }
+  .eyebrow-orange { color: var(--neon-orange); }
+
+  /* ── ABOUT ── */
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .about-body p {
+    font-size: 0.88rem;
+    line-height: 1.78;
+    color: var(--text);
+  }
+
+  .about-body a {
+    color: var(--text);
+    text-decoration-color: var(--neon-green);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.18s;
+  }
+  .about-body a:hover { color: var(--neon-green); }
+
+  /* Education */
+  .edu-list {
+    margin-top: 1.75rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-list li { display: flex; flex-direction: column; gap: 0.15rem; }
+  .edu-school { font-size: 0.8rem; font-weight: 500; color: var(--text); }
+  .edu-detail {
+    font-family: var(--f-mono);
+    font-size: 0.63rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* Contact */
+  .contact-list {
+    margin-top: 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .contact-list a {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.18s;
+  }
+  .contact-list a::before {
+    content: '→';
+    color: var(--neon-orange);
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+  .contact-list a:hover { color: var(--neon-orange); }
+  .contact-list a:focus-visible {
+    outline: 2px solid var(--neon-orange);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ── UPDATES ── */
+  .update-list { list-style: none; display: flex; flex-direction: column; }
+
+  .update-item {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.75rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .update-item:first-child { border-top: 1px solid var(--border); }
+
+  .update-date {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--neon-orange);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    padding-top: 0.1rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .update-text { font-size: 0.875rem; line-height: 1.6; color: var(--text); }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    padding: 0.14em 0.6em;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    position: relative;
+    top: -0.05em;
+  }
+  .tag-new                    { background: var(--neon-pink-faint);   color: var(--neon-pink); }
+  .tag-paper, .tag-award      { background: var(--neon-orange-faint); color: var(--neon-orange); }
+  .tag-talk, .tag-misc        { background: var(--neon-green-faint);  color: var(--neon-green); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 1.75rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-note {
+    font-family: var(--f-mono);
+    font-size: 0.63rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 820px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero-section { padding: 3rem 1.5rem 3.5rem; }
+    .page-grid { grid-template-columns: 1fr; padding: 0 1.5rem 5rem; gap: 0; }
+    .sidebar {
+      position: static;
+      border-left: none;
+      border-bottom: 2px solid var(--neon-green);
+      padding-left: 0;
+      margin-left: 0;
+      padding-bottom: 2.5rem;
+      padding-top: 2.5rem;
+    }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links { gap: 1.4rem; }
+    .update-item { grid-template-columns: 5.5rem 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-mark" href="#" aria-label="Home">e.schaefer</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#updates">updates</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <h1 class="hero-name">Elizabeth Schaefer</h1>
+  </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="page-grid">
+
+  <!-- LEFT: ABOUT -->
+  <aside class="sidebar">
+    <section id="about">
+      <p class="eyebrow eyebrow-green" aria-label="Section: About">About</p>
+      <div class="about-body">
+
+        <!-- ✏️ Main bio — update advisor/lab links when you have permanent URLs -->
+        <p>I'm a first-year PhD student in computer science at the University of Pennsylvania, advised by <a href="https://www.seas.upenn.edu/~exwong/" target="_blank" rel="noopener">Eric Wong</a> in the <a href="#" target="_blank" rel="noopener">Brachio Lab</a>. I'm interested in machine learning enhancements to surgical applications and AI safety.</p>
+
+        <p>I'm grateful to be supported by the <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">National Science Foundation Graduate Research Fellowship Program</a> (NSF GRFP).</p>
+
+        <p>I graduated from Yale in 2026 with a B.S. in Computer Science and a B.A. in Humanities (Literature). At Yale, I served as <a href="https://www.instagram.com/morsecollegecouncil/?hl=en" target="_blank" rel="noopener">president of my residential college</a>, Head TA for <a href="https://cs50.yale.edu/" target="_blank" rel="noopener">CS50</a>, and a recruitment coordinator and interviewer for Yale Admissions. I also make <a href="https://drive.google.com/drive/folders/1YTGCbBCK3QAHFA8Suxq9z1Btc5mcbdc8?usp=sharing" target="_blank" rel="noopener">graphic design and creative work</a>.</p>
+
+      </div>
+
+      <!-- Education -->
+      <ul class="edu-list">
+        <li>
+          <span class="edu-school">University of Pennsylvania</span>
+          <span class="edu-detail">PhD, Computer Science &nbsp;·&nbsp; 2026–</span>
+        </li>
+        <li>
+          <span class="edu-school">Yale University</span>
+          <span class="edu-detail">B.S. Computer Science &nbsp;+&nbsp; B.A. Humanities &nbsp;·&nbsp; 2022–2026</span>
+        </li>
+      </ul>
+
+      <!-- Contact -->
+      <ul class="contact-list">
+        <li><a href="mailto:elizabeth.schaefer@yale.edu">elizabeth.schaefer@yale.edu</a></li>
+        <!-- ✏️ Uncomment when theses are ready:
+        <li><a href="/thesis-cs.pdf">CS Thesis</a></li>
+        <li><a href="/thesis-lit.pdf">Humanities Thesis</a></li>
+        -->
+      </ul>
+    </section>
+  </aside>
+
+  <!-- RIGHT: UPDATES -->
+  <div class="main-col">
+    <section id="updates">
+      <p class="eyebrow eyebrow-orange" aria-label="Section: Updates">Updates</p>
+
+      <!--
+        HOW TO ADD A NEW UPDATE:
+        Copy one <li> block below and paste it above the others.
+        Change the datetime attribute and the visible date text.
+        Edit the description. Add a tag if you want one:
+          <span class="tag tag-new">new</span>      ← pink
+          <span class="tag tag-paper">paper</span>  ← orange
+          <span class="tag tag-talk">talk</span>    ← green
+      -->
+      <ul class="update-list">
+
+        <li class="update-item">
+          <time class="update-date" datetime="2026-09">Sep 2026</time>
+          <span class="update-text">Started the PhD program at Penn Engineering.<span class="tag tag-new">new</span></span>
+        </li>
+
+        <li class="update-item">
+          <time class="update-date" datetime="2026-08">Aug 2026</time>
+          <span class="update-text">Attended orientation week. Looking forward to the semester.</span>
+        </li>
+
+      </ul>
+    </section>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-note">Elizabeth Schaefer &nbsp;·&nbsp; Philadelphia, PA</span>
+  <span class="footer-note">Updated Sep 2026</span><!-- ✏️ update this date -->
+</footer>
